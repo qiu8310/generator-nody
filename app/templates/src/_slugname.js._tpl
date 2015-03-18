@@ -1,0 +1,13 @@
+/*
+ * <%= slugname %>
+ * <%= githubUser.html_url %>/<%= slugname %>"
+ *
+ * Copyright (c) <%= currentYear %><% if (githubUser.name) { %> <%= githubUser.name %><% } %>
+ * Licensed under the <%= props.license %> license.
+ */
+
+'use strict';
+
+module.exports = function() {
+  return 'awesome';
+};
