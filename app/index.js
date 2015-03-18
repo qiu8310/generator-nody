@@ -138,17 +138,7 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: {
-    auto: yoHelper.writing(function(src, target) {
-      if (target.indexOf('slugname') >= 0) {
-        var dir = path.dirname(target), base = path.basename(target);
-
-        base = base.split('.');
-        base[0] = yoHelper.normalize(base[0].replace('slugname', this.slugname), this.nameCase);
-        this.template(src, path.join(dir, base.join('.')));
-
-        return false;
-      }
-    }),
+    auto: yoHelper.writing(),
     custom: function() {
       if (this.props.cli) {
         this.template('_ignore/cli._tpl', 'cli.js')

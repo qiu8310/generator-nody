@@ -1,5 +1,5 @@
 # <%= slugname %> 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]<% if (coverallsModule) { %> [![Coverage Status][coveralls-image]][coveralls-url]<% } %>
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Code Climate][climate-image]][climate-url]<% if (coverallsModule) { %> [![Coverage Status][coveralls-image]][coveralls-url]<% } %>
 
 <%= props.description %>
 
@@ -33,7 +33,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 Copyright (c) <%= currentYear %><% if (githubUser.name) { %> <%= githubUser.name %><% } %>. Licensed under the <%= props.license %> license.
 
 
-
+[climate-url]: https://codeclimate.com/github/<%= githubUser.login %>/<%= slugname %>
+[climate-image]: https://codeclimate.com/github/<%= githubUser.login %>/<%= slugname %>/badges/gpa.svg
 [npm-url]: https://npmjs.org/package/<%= slugname %>
 [npm-image]: https://badge.fury.io/js/<%= slugname %>.svg
 [travis-url]: https://travis-ci.org/<%= githubUser.login %>/<%= slugname %>

@@ -19,7 +19,7 @@
 */
 
 var <%= safeSlugname %> = require('../');<% if (testFramework === 'mocha') { %>
-var assert = require('assert');<% } %>
+var should = require('should');<% } %>
 
 describe('<%= safeSlugname %>', function () {
 

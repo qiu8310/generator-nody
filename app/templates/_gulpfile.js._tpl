@@ -47,7 +47,7 @@ gulp.task('unitTest', function () {
   gulp.src(paths.tests, {cwd: __dirname})
     .pipe(plugins.plumber(plumberConf))<% if (testFramework === 'jasmine') { %>
     .pipe(plugins.jasmine());<% } %><% if (testFramework === 'mocha') { %>
-    .pipe(plugins.mocha({ reporter: 'list', require: 'should' }));<% } %>
+    .pipe(plugins.mocha({ reporter: 'list' }));<% } %>
 });<% } %><% if (releaseModule) { %>
 
 gulp.task('bump', ['test'], function () {

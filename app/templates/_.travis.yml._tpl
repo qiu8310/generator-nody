@@ -5,3 +5,7 @@ node_js:
   - '0.10'<% if (coverallsModule) { %>
 after_script:
   - npm run coveralls<% } %>
+notifications:
+  email:
+    - <%= githubUser.email %>
+
