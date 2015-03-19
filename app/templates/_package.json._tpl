@@ -5,7 +5,7 @@
   "homepage": "<%= githubUser.html_url %>/<%= slugname %>",
   "bugs": "<%= githubUser.html_url %>/<%= slugname %>/issues",
   "license": "<%= props.license %>",
-  "main": "src/<%= slugname %>.js",
+  "main": "src/<%= slugfile %>.js",
   "author": {
     "name": "<%= githubUser.name %>",
     "email": "<%= githubUser.email %>"
@@ -38,7 +38,7 @@
   },
   <% if (props.cli) { %>
   "bin": {
-      "<%= slugname %>": "cli.js"
+      "<%= slugfile %>": "cli.js"
   },<% } %>
   "scripts": {<% if (coverallsModule) { %>
     "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",<% } %>

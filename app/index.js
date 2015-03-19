@@ -18,7 +18,8 @@ module.exports = yeoman.generators.Base.extend({
 
     askForModuleName: yoHelper.askForModuleName(function(data) {
       this.slugname = this.moduleName = data.moduleName;
-      this.safeSlugname = this.slugname.replace( /-+([a-zA-Z0-9])/g, function (g) { return g[1].toUpperCase(); });
+      this.slugfile = /^(.*)\.js$/.test(data.moduleName) ? RegExp.$1 : data.moduleName;
+      this.safeSlugname = yoHelper.normalize(this.slugfile, 'camel');
     }),
 
     askForGithubUser: yoHelper.askForGithubUser(function(data) {
