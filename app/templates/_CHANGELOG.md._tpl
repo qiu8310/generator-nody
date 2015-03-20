@@ -1,4 +1,5 @@
 
-# 0.0.1 (<%= currentDate %>)
+0.0.1 / <%= currentDate %>
+==================
 
-- Initial version
+  *  Initial version
