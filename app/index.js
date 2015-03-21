@@ -8,7 +8,7 @@ var path = require('path');
 module.exports = yeoman.generators.Base.extend({
   initializing: function () {
     this.testFramework = this.options['test-framework'] || 'mocha';
-    this.nameCase = this.options['name-case'] || 'camel';
+    this.nameCase = this.options['name-case'] || 'kebab';
     this.currentYear = new Date().getFullYear();
     this.currentDate = new Date().toISOString().slice(0,10); // YYY-MM-DD
   },

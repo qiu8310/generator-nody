@@ -24,7 +24,7 @@ Install the generator by running: `npm install -g generator-nody`.
   
 * `--name-case`
 
-  Defaults to `camel`, Can be switched to `kebab`, `snake`
+  Defaults to `kebab`, Can be switched to `camel`, `snake`
   
   
   
