@@ -18,12 +18,13 @@ module.exports = yeoman.generators.Base.extend({
 
     askForModuleName: yoHelper.askForModuleName(function(data) {
       this.slugname = this.moduleName = data.moduleName;
-      this.slugfile = /^(.*)\.js$/.test(data.moduleName) ? RegExp.$1 : data.moduleName;
+      this.npmname = data.pkgName;
+      this.slugfile = /^(.*)[\._\-]js$/.test(data.moduleName) ? RegExp.$1 : data.moduleName;
       this.safeSlugname = yoHelper.normalize(this.slugfile, 'camel');
     }),
 
-    askForGithubUser: yoHelper.askForGithubUser(function(data) {
-      this.githubUser = data;
+    askForUserData: yoHelper.askForUserData(function(data) {
+      this.userData = data;
     }),
 
     askForDependencies: yoHelper.askForDependencies(
@@ -125,7 +126,7 @@ module.exports = yeoman.generators.Base.extend({
       }];
 
       this.prompt(prompts, function(props) {
-        props.keywords = props.keywords.split(',').map(function (el) { return el.trim(); });
+        props.keywords = props.keywords.trim() ? props.keywords.trim().split(/\s*,\s*/) : [];
         this.props = props;
         done();
       }.bind(this));

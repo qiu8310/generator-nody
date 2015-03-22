@@ -1,8 +1,8 @@
 /*
- * <%= slugname %>
- * <%= githubUser.html_url %>/<%= slugname %>"
+ * <%= npmname %>
+ * <%= userData.project_url %>
  *
- * Copyright (c) <%= currentYear %><% if (githubUser.name) { %> <%= githubUser.name %><% } %>
+ * Copyright (c) <%= currentYear %> <%= userData.name %>
  * Licensed under the <%= props.license %> license.
  */
 

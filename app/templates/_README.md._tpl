@@ -1,5 +1,7 @@
-# <%= slugname %> 
+# <%= npmname %>
+<% if (userData.github) { %>
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Code Climate][climate-image]][climate-url]<% if (coverallsModule) { %> [![Coverage Status][coveralls-image]][coveralls-url]<% } %>
+<% } %>
 
 <%= props.description %>
 
@@ -7,14 +9,14 @@
 ## Install
 
 ```bash
-$ npm install --save <%= slugname %>
+$ npm install --save <%= npmname %>
 ```
 
 
 ## Usage
 
 ```javascript
-var <%= safeSlugname %> = require('<%= slugname %>');
+var <%= safeSlugname %> = require('<%= npmname %>');
 <%= safeSlugname %>(); // "awesome"
 ```
 
@@ -30,16 +32,17 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 
-Copyright (c) <%= currentYear %><% if (githubUser.name) { %> <%= githubUser.name %><% } %>. Licensed under the <%= props.license %> license.
+Copyright (c) <%= currentYear %> <%= userData.name %>. Licensed under the <%= props.license %> license.
 
-
-[climate-url]: https://codeclimate.com/github/<%= githubUser.login %>/<%= slugname %>
-[climate-image]: https://codeclimate.com/github/<%= githubUser.login %>/<%= slugname %>/badges/gpa.svg
-[npm-url]: https://npmjs.org/package/<%= slugname %>
-[npm-image]: https://badge.fury.io/js/<%= slugname %>.svg
-[travis-url]: https://travis-ci.org/<%= githubUser.login %>/<%= slugname %>
-[travis-image]: https://travis-ci.org/<%= githubUser.login %>/<%= slugname %>.svg?branch=master
-[daviddm-url]: https://david-dm.org/<%= githubUser.login %>/<%= slugname %>.svg?theme=shields.io
-[daviddm-image]: https://david-dm.org/<%= githubUser.login %>/<%= slugname %><% if (coverallsModule) { %>
-[coveralls-url]: https://coveralls.io/r/<%= githubUser.login %>/<%= slugname %>
-[coveralls-image]: https://coveralls.io/repos/<%= githubUser.login %>/<%= slugname %>/badge.png<% } %>
+<% if (userData.github) { %>
+[climate-url]: https://codeclimate.com/github/<%= userData.github.login %>/<%= slugname %>
+[climate-image]: https://codeclimate.com/github/<%= userData.github.login %>/<%= slugname %>/badges/gpa.svg
+[npm-url]: https://npmjs.org/package/<%= npmname %>
+[npm-image]: https://badge.fury.io/js/<%= npmname %>.svg
+[travis-url]: https://travis-ci.org/<%= userData.github.login %>/<%= slugname %>
+[travis-image]: https://travis-ci.org/<%= userData.github.login %>/<%= slugname %>.svg?branch=master
+[daviddm-url]: https://david-dm.org/<%= userData.github.login %>/<%= slugname %>.svg?theme=shields.io
+[daviddm-image]: https://david-dm.org/<%= userData.github.login %>/<%= slugname %><% if (coverallsModule) { %>
+[coveralls-url]: https://coveralls.io/r/<%= userData.github.login %>/<%= slugname %>
+[coveralls-image]: https://coveralls.io/repos/<%= userData.github.login %>/<%= slugname %>/badge.png<% } %>
+<% } %>

@@ -1,6 +1,6 @@
 # nody
 
-> Based on [generator-node](https://github.com/youngmountain/generator-node-gulp)
+> Based on [generator-node-gulp](https://github.com/youngmountain/generator-node-gulp)
 
 This generator creates a new Node.js module, generating all the boilerplate you need to get started with best-of-breed from the gulp ecosystem. The generator also optionally installs additional gulp plugins, see the list below.
 

@@ -1,21 +1,22 @@
 {
-  "name": "<%= slugname %>",
+  "name": "<%= npmname %>",
   "description": "<%= props.description %>",
   "version": "0.0.1",
-  "homepage": "<%= githubUser.html_url %>/<%= slugname %>",
-  "bugs": "<%= githubUser.html_url %>/<%= slugname %>/issues",
+  "homepage": "<%= userData.project_url %>",
+  "bugs": "<%= userData.issue_url %>",
   "license": "<%= props.license %>",
   "main": "src/<%= slugfile %>.js",
   "author": {
-    "name": "<%= githubUser.name %>",
-    "email": "<%= githubUser.email %>"
+    "name": "<%= userData.name %>",
+    "email": "<%= userData.email %>"
   },
   "repository": {
     "type": "git",
-    "url": "<%= githubUser.html_url %>/<%= slugname %>"
+    "url": "<%= userData.project_url %>"
   },
   "keywords":[
-    "<%= slugname %>"<% for (var i = 0; i < props.keywords.length; i++) { %>,
+    "<%= slugname %>"<% if (slugname !== npmname) { %>,
+    "<%= npmname %>"<% } %><% for (var i = 0; i < props.keywords.length; i++) { %>,
     "<%= props.keywords[i] %>"<% } %>
   ],
   "dependencies": {<% if (dependencies) { %>
@@ -24,21 +25,21 @@
   "devDependencies": {
     "gulp": "^3.8.8",<% if (releaseModule) { %>
     "gulp-util": "^3.0.1",
-    "gulp-bump": "^0.1.11",<% } %><% if (jscsModule) { %>
-    "gulp-jscs": "^1.1.2",<% } %>
-    "gulp-jshint": "^1.8.4",<% if (testFramework === 'mocha') { %>
-    "gulp-mocha": "^1.1.0",<% } %><% if (testFramework === 'jasmine') { %>
+    "gulp-bump": "^0.3.0",<% } %><% if (jscsModule) { %>
+    "gulp-jscs": "^1.4.0",<% } %>
+    "gulp-jshint": "^1.9.4",<% if (testFramework === 'mocha') { %>
+    "gulp-mocha": "^2.0.0",<% } %><% if (testFramework === 'jasmine') { %>
     "gulp-jasmine": "^1.0.0",<% } %><% if (istanbulModule) { %>
     "gulp-istanbul": "^0.5.0",<% } %><% if (coverallsModule) { %>
     "coveralls": "^2.11.1",<% } %><% if (testFramework === 'mocha') { %>
-    "should": "^4.0.4",<% } %>
-    "jshint-stylish": "^0.4.0",
-    "gulp-load-plugins": "^0.6.0",
+    "should": "^5.2.0",<% } %>
+    "jshint-stylish": "^1.0.1",
+    "gulp-load-plugins": "^0.9.0",
     "gulp-plumber": "^0.6.5"
   },
   <% if (props.cli) { %>
   "bin": {
-      "<%= slugfile %>": "cli.js"
+      "<%= npmname %>": "cli.js"
   },<% } %>
   "scripts": {<% if (coverallsModule) { %>
     "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",<% } %>

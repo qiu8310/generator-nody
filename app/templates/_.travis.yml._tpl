@@ -7,5 +7,5 @@ after_script:
   - npm run coveralls<% } %>
 notifications:
   email:
-    - <%= githubUser.email %>
+    - <%= userData.email %>
 
