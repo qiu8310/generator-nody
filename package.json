@@ -30,6 +30,6 @@
   },
   "dependencies": {
     "yeoman-generator": "^0.18.10",
-    "yo-helper": "^0.1.0"
+    "yo-helper": "^0.1.1"
   }
 }
