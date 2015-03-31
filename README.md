@@ -17,14 +17,23 @@ Install the generator by running: `npm install -g generator-nody`.
   Defaults to `mocha`. Can be switched to
   another supported testing framework like `jasmine`.
 
+* `--name-case`
+  
+    Defaults to `kebab`, Can be switched to `camel`, `snake`
+
 * `--skip-install`
 
   Skips the automatic execution of `bower` and `npm` after
   scaffolding has finished.
   
-* `--name-case`
+* `--skip-cache`
+  
+  Default `false`, Do not remember prompt answers. 
+  
 
-  Defaults to `kebab`, Can be switched to `camel`, `snake`
+* `--help`
+
+  Show help
   
   
   

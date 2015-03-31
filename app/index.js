@@ -113,7 +113,8 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         name: 'license',
         message: 'License',
-        default: 'MIT'
+        default: 'MIT',
+        store: true
       }, {
         type: 'confirm',
         name: 'cli',
@@ -122,7 +123,8 @@ module.exports = yeoman.generators.Base.extend({
         type: 'confirm',
         name: 'skipInstall',
         message: 'Do you need skip npm install?',
-        default: true
+        default: false,
+        store: true
       }];
 
       this.prompt(prompts, function(props) {
@@ -151,7 +153,8 @@ module.exports = yeoman.generators.Base.extend({
   install: function () {
     this.installDependencies({
       skipInstall: this.props['skipInstall'] || this.options['skip-install'],
-      bowerInstall: false
+      bower: false,
+      npm: true
     });
   }
 });
