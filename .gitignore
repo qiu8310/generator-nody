@@ -1,5 +1,8 @@
 node_modules/
 npm-debug.log
+coverage
+test/tmp
+tmp
 .DS_Store
 .idea
 

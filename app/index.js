@@ -2,10 +2,36 @@
 
 var yeoman = require('yeoman-generator');
 var yoHelper = require('yo-helper');
-var path = require('path');
 
+module.exports = yeoman.Base.extend({
 
-module.exports = yeoman.generators.Base.extend({
+  constructor: function() {
+    yeoman.Base.apply(this, arguments);
+
+    this.option('skip-install', {
+      desc: 'Skips the automatic execution of `bower` and `npm` after scaffolding has finished.',
+      type: Boolean,
+      defaults: 'false'
+    });
+
+    this.option('name-case', {
+      desc: 'Set name style. Can be set to `camel`, `snake` or `kebab`',
+      type: String,
+      defaults: 'kebab'
+    });
+
+    this.option('test-framework', {
+      desc: 'Set test framework. Can be set to `mocha` or `jasmine`.',
+      type: String,
+      defaults: 'mocha'
+    });
+
+    //console.log('=============================');
+    //console.log(this._args);
+    //console.log(this.options);
+    //console.log(this.appname);
+  },
+
   initializing: function () {
     this.testFramework = this.options['test-framework'] || 'mocha';
     this.nameCase = this.options['name-case'] || 'kebab';
@@ -63,7 +89,6 @@ module.exports = yeoman.generators.Base.extend({
       }];
 
       this.prompt(prompts, function (props) {
-
         var hasMod = function (mod) {
           return props.modules.indexOf(mod) !== -1;
         };
@@ -119,13 +144,13 @@ module.exports = yeoman.generators.Base.extend({
         type: 'confirm',
         name: 'cli',
         message: 'Do you need a CLI?'
-      }, {
+      }/*, {
         type: 'confirm',
         name: 'skipInstall',
         message: 'Do you need skip npm install?',
         default: false,
         store: true
-      }];
+      }*/];
 
       this.prompt(prompts, function(props) {
         props.keywords = props.keywords.trim() ? props.keywords.trim().split(/\s*,\s*/) : [];
@@ -145,14 +170,14 @@ module.exports = yeoman.generators.Base.extend({
     auto: yoHelper.writing(),
     custom: function() {
       if (this.props.cli) {
-        this.template('_ignore/cli._tpl', 'cli.js')
+        this.template('_ignore/cli._tpl', 'cli.js');
       }
     }
   },
 
   install: function () {
     this.installDependencies({
-      skipInstall: this.props['skipInstall'] || this.options['skip-install'],
+      // skipInstall: this.props['skipInstall'] || this.options['skip-install'],
       bower: false,
       npm: true
     });

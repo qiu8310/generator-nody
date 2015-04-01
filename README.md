@@ -1,9 +1,13 @@
 # nody
+[![NPM version](https://badge.fury.io/js/generator-nody.svg)](https://npmjs.org/package/generator-nody)
+[![Build Status](https://travis-ci.org/qiu8310/generator-nody.svg)](https://travis-ci.org/qiu8310/generator-nody)
+[![Code Climate](https://codeclimate.com/github/qiu8310/generator-nody/badges/gpa.svg)](https://codeclimate.com/github/qiu8310/generator-nody)
+[![Test Coverage](https://codeclimate.com/github/qiu8310/generator-nody/badges/coverage.svg)](https://codeclimate.com/github/qiu8310/generator-nody)
+
 
 > Based on [generator-node-gulp](https://github.com/youngmountain/generator-node-gulp)
 
 This generator creates a new Node.js module, generating all the boilerplate you need to get started with best-of-breed from the gulp ecosystem. The generator also optionally installs additional gulp plugins, see the list below.
-
 
 
 ## Installation
@@ -14,23 +18,24 @@ Install the generator by running: `npm install -g generator-nody`.
 
 * `--test-framework=[framework]`
 
-  Defaults to `mocha`. Can be switched to
-  another supported testing framework like `jasmine`.
+  Defaults to `mocha`. Can be switched to `jasmine`.
 
 * `--name-case`
   
-    Defaults to `kebab`, Can be switched to `camel`, `snake`
+  Set name style. Defaults to `kebab`, Can be switched to `camel`, `snake`
 
 * `--skip-install`
 
-  Skips the automatic execution of `bower` and `npm` after
-  scaffolding has finished.
+  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
   
 * `--skip-cache`
   
-  Default `false`, Do not remember prompt answers. 
+  Do not remember prompt answers. Default `false`. 
   
-
+* `--force`
+  
+  Force overwrite file
+  
 * `--help`
 
   Show help
@@ -79,6 +84,15 @@ Should you have any problems or wishes for improvements, feel free to open an [i
 Some recommended articles to get you started with node.
 - [Node.js require(s) best practices](http://www.mircozeiss.com/node-js-require-s-best-practices/)
 
+
+## Knowledges
+
+* Yeoman support template file name
+* If your template file need use `<%` keyword, you can use `<%%` for saving it
+* Yeoman generator has `directory` function to copy recursively the files from source directory to root directory,
+  make sure the destination dirs exists, and note that the function useing `copy`, not `template`
+* Yeoman support sync get git email `this.git.email()` and name `this.git.name()` and async get git login name `this.github.username(cb)`
+ 
 
 
 ## License
