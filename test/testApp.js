@@ -98,7 +98,11 @@ function runGenerator(opts, cb) {
   helper.run(appRoot)
     .inDir(join(testRoot, 'tmp'))
     .withOptions({
+      'skip-install-message': true,
+      'skip-install': true,
       'skipInstall': true,
+      'skip-welcome-message': true,
+      'skip-message': true,
       'name-case': opts.nameCase || 'kebab',
       'test-framework': opts.testFramework || 'mocha'
     })
@@ -113,7 +117,9 @@ function runGenerator(opts, cb) {
 describe('nody:app', function () {
   beforeEach(function() { mockNet(); });
   afterEach( function() { nock.cleanAll(); nock.enableNetConnect(); });
-  after(function() { rimraf.sync(join(testRoot, 'tmp')); });
+  function clean() { try {rimraf.sync(join(testRoot, 'tmp'));} catch(e) {} }
+  before(clean);
+  after(clean);
 
   it('default run', function(done) {
     runGenerator(function() {
@@ -135,8 +141,10 @@ describe('nody:app', function () {
       ]);
 
       assert.fileContent('package.json', 'gulp-mocha')
-      assert.noFileContent('package.json', 'gulp-jasmine')
-      assert.noFileContent('package.json', 'coveralls')
+      assert.noFileContent([
+        ['package.json', 'coveralls'],
+        ['package.json', 'gulp-jasmine']
+      ])
 
       done();
     })

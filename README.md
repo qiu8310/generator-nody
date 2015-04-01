@@ -14,6 +14,20 @@ This generator creates a new Node.js module, generating all the boilerplate you 
 
 Install the generator by running: `npm install -g generator-nody`.
 
+
+## Usage
+
+At the command-line, cd into an empty directory, run this command and follow the prompts.
+
+```
+yo nody [options]
+```
+
+_Note that this template will generate files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files._
+
+
+
+
 ## Options
 
 * `--test-framework=[framework]`
@@ -59,19 +73,6 @@ Install the generator by running: `npm install -g generator-nody`.
 - [debug](https://github.com/visionmedia/debug)
 - [Lo-Dash](http://lodash.com/)
 - [q](https://github.com/kriskowal/q)
-
-
-
-## Usage
-
-At the command-line, cd into an empty directory, run this command and follow the prompts.
-
-```
-yo nody
-```
-
-_Note that this template will generate files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files._
-
 
 
 ## Support
