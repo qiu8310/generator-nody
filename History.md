@@ -1,4 +1,12 @@
 
+0.2.0 / 2015-04-01
+==================
+
+  * Add test, travis-ci, coverage, jshint
+  * Refactor code style
+  * Update README
+
+
 0.1.1 / 2015-03-22
 ==================
 
