@@ -16,6 +16,14 @@
 
   SHOULD.JS:
     http://shouldjs.github.io/
+
+  Some test frameworks:
+    sinon:  function spy
+    nock: mock http request
+    supertest: test http server
+    rewire: modify the behaviour of a module such that you can easily inject mocks and manipulate private variables
+
+  More on http://www.clock.co.uk/blog/tools-for-unit-testing-and-quality-assurance-in-node-js
 */
 
 var <%= safeSlugname %> = require('../');<% if (testFramework === 'mocha') { %>
