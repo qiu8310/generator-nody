@@ -74,6 +74,10 @@ module.exports = yeoman.Base.extend({
         name: 'modules',
         message: 'Which modules would you like to include?',
         choices: [{
+          value: 'docModule',
+          name: 'jsdoc (JavaScript doc generator)',
+          checked: true
+        }, {
           value: 'jscsModule',
           name: 'jscs (JavaScript Code Style checker)',
           checked: true
@@ -93,6 +97,7 @@ module.exports = yeoman.Base.extend({
           return props.modules.indexOf(mod) !== -1;
         };
 
+        this.docModule = hasMod('docModule');
         this.jscsModule = hasMod('jscsModule');
         this.releaseModule = hasMod('releaseModule');
         this.istanbulModule = hasMod('istanbulModule');
@@ -171,6 +176,12 @@ module.exports = yeoman.Base.extend({
     custom: function() {
       if (this.props.cli) {
         this.template('_ignore/cli._tpl', 'cli.js');
+      }
+      if (this.docModule && this.userData.github) {
+        this.template('_ignore/_publish_docs.sh._tpl', 'publish_docs.sh');
+      }
+      if (this.docModule) {
+        this.copy('_ignore/_jsdoc.json', 'jsdoc.json');
       }
     }
   },

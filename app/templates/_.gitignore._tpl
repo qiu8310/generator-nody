@@ -3,4 +3,6 @@ temp/<% if (coverallsModule) { %>
 coverage/
 <% } %>npm-debug.log
 .DS_Store
-.idea
+.idea<% if (docModule) { %>
+docs/
+<% } %>

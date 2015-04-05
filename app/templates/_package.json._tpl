@@ -34,14 +34,16 @@
     "coveralls": "^2.11.1",<% } %><% if (testFramework === 'mocha') { %>
     "should": "^5.2.0",<% } %>
     "jshint-stylish": "^1.0.1",
-    "gulp-load-plugins": "^0.9.0",
+    "gulp-load-plugins": "^0.9.0",<% if (docModule) { %>
+    "jsdoc": "^3.3.0-beta3", <% } %>
     "gulp-plumber": "^0.6.5"
   },
   <% if (props.cli) { %>
   "bin": {
       "<%= npmname %>": "cli.js"
   },<% } %>
-  "scripts": {<% if (coverallsModule) { %>
+  "scripts": {<% if (docModule) { %>
+    "docs": "./node_modules/.bin/jsdoc -c ./jsdoc.json ./README.md && echo 'code{padding: 2px 4px;font-size: 90%;color:#c7254e;background-color:#f9f2f4;border-radius:4px;}' >> ./docs/styles/jsdoc-default.css",<% } %><% if (coverallsModule) { %>
     "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",<% } %>
     "test": "gulp test"
   }
