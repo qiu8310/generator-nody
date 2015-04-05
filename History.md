@@ -1,4 +1,10 @@
 
+0.2.1 / 2015-04-05
+==================
+
+  * Fix `gulp watch` error, like [this](https://github.com/youngmountain/generator-node-gulp/issues/54)
+
+
 0.2.0 / 2015-04-01
 ==================
 
