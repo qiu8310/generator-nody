@@ -1,7 +1,7 @@
 {
   "name": "generator-nody",
   "description": "A node generator for Yeoman, with mocha, gulp, istanbul, jshint and jasmine supported ",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "homepage": "https://github.com/qiu8310/generator-nody",
   "bugs": "https://github.com/qiu8310/generator-nody/issues",
   "license": "MIT",
