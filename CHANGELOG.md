@@ -1,4 +1,11 @@
 
+0.2.3 / 2015-04-06
+==================
+
+  * Rename History.md to CHANGELOG.md
+  * Add release and unrelease script
+
+
 0.2.2 / 2015-04-05
 ==================
 
