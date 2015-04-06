@@ -7,15 +7,16 @@ function exit_if_last_not_success() {
   fi
 }
 
-
 which git-release > /dev/null
 exit_if_last_not_success '\033[31m git-release required, install it in\033[0m \033[34mhttps://github.com/tj/git-extras\033[0m'
 
-
 if test $# -gt 0; then
-  npm version $1 -m "Release $1"
-  exit_if_last_not_success
+  cur_version=$(cat package.json | grep -F '"version"' |  awk '{print $2}' | sed 's/"//g' | sed 's/,//g')
+  version = $1
+  echo Current package version $cur_version, bump to $version
+  sed -i ""  's/"version": *"${cur_version}"/"version": ${version}/g' package.json
   git-release $1 -c
+  npm publish
 else
   echo '\033[31m version number required \033[0m'
   exit 1
