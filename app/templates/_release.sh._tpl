@@ -24,7 +24,8 @@ if test $# -gt 0; then
     echo '\033[31m version update failed \033[0m'
     exit 1
   fi
-  git-release $1 -c \<% if (docModule) { %>
+  git-changelog -t $1 \
+    && git-release $1 \<% if (docModule) { %>
     && sh 'publish docs to gh-pages branch'
     && sh ./publish_docs.sh \<% } %>
     && echo 'npm publish ... ' \
