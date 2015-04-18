@@ -101,3 +101,7 @@ Some recommended articles to get you started with node.
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/qiu8310/generator-nody/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
