@@ -1,0 +1,35 @@
+{
+  "name": "<%= npmname %>",
+  "version": "0.0.0",
+  "homepage": "<%= userData.project_url %>",
+  "authors": {
+    "name": "<%= userData.name %>",
+    "email": "<%= userData.email %>"
+  },
+  "description": "<%= props.description %>",
+  "main": "browser/<%= slugfile %>.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "<%= slugname %>"<% if (slugname !== npmname) { %>,
+    "<%= npmname %>"<% } %><% for (var i = 0; i < props.keywords.length; i++) { %>,
+    "<%= props.keywords[i] %>"<% } %>
+  ],
+  "license": "<%= props.license %>",
+  "ignore": [
+    "**/.*",
+    "*.sh",
+    "*.js",
+    "node_modules",
+    "bower_components",
+    "test",
+    "example",
+    "jsdoc.json",
+    "src",
+    "docs",
+    "coverage",
+    "gh-pages",
+    "tests"
+  ]
+}

@@ -11,7 +11,7 @@ module.exports = yeoman.Base.extend({
     this.option('skip-install', {
       desc: 'Skips the automatic execution of `bower` and `npm` after scaffolding has finished.',
       type: Boolean,
-      defaults: 'false'
+      defaults: false
     });
 
     this.option('name-case', {
@@ -57,7 +57,7 @@ module.exports = yeoman.Base.extend({
       [
         { name: 'lodash', description: 'A utility library'},
         { name: 'q', description: 'A library for promises'},
-        { name: 'debug'}
+        { name: 'debug', description: 'A debug module'}
       ],
       function(obj, str) {
         this.usedDependencies = obj;
@@ -78,13 +78,17 @@ module.exports = yeoman.Base.extend({
           name: 'jsdoc (JavaScript doc generator)',
           checked: true
         }, {
+          value: 'bowerModule',
+          name: 'bower (For browser user)',
+          checked: true
+        }, {
           value: 'jscsModule',
           name: 'jscs (JavaScript Code Style checker)',
           checked: true
         }, {
           value: 'releaseModule',
           name: 'release (Bump npm versions with Gulp)',
-          checked: true
+          checked: false
         }, {
           value: 'istanbulModule',
           name: 'istanbul (JS code coverage tool)',
@@ -98,6 +102,7 @@ module.exports = yeoman.Base.extend({
         };
 
         this.docModule = hasMod('docModule');
+        this.bowerModule = hasMod('bowerModule');
         this.jscsModule = hasMod('jscsModule');
         this.releaseModule = hasMod('releaseModule');
         this.istanbulModule = hasMod('istanbulModule');
@@ -182,6 +187,10 @@ module.exports = yeoman.Base.extend({
       }
       if (this.docModule) {
         this.copy('_ignore/_jsdoc.json', 'jsdoc.json');
+      }
+      if (this.bowerModule) {
+        this.template('_ignore/_bower.json._tpl', 'bower.json');
+        this.directory('browser');
       }
     }
   },

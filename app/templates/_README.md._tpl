@@ -11,13 +11,34 @@
 
 <%= props.description %>
 
+<% if (userData.github) { %><% if (docModule) { %>
+[Github Repo][project-url]
+
+[JSDOC Generated Document](http://<%= userData.github.login %>.github.io/<%= slugname %>)
+<% } %><% } %>
 
 ## Install
 
+<% if (bowerModule) { %>
+### Node.js
+
 ```bash
-$ npm install --save <%= npmname %>
+npm install --save <%= npmname %>
 ```
 
+### Browser
+
+```bash
+bower install --save <%= npmname %>
+```
+
+<% } else { %>
+
+```bash
+npm install --save <%= npmname %>
+```
+
+<% } %>
 
 ## Usage
 
