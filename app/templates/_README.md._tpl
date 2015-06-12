@@ -74,6 +74,11 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
   - And more...
 
 
+## History
+
+[CHANGELOG](CHANGELOG.md)
+
+
 ## License
 
 Copyright (c) <%= currentYear %> <%= userData.name %>. Licensed under the <%= props.license %> license.

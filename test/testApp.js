@@ -92,7 +92,7 @@ function runGenerator(opts, cb) {
     keywords: 'key,words',
     license: 'MIT',
     cli: true
-  }
+  };
   for (var key in opts) { if (key in prompts) { prompts[key] = opts[key]; } }
 
   helper.run(appRoot)
@@ -135,7 +135,7 @@ describe('nody:app', function () {
         '.travis.yml',
         'src/a-m.js',
         'test/test-a-m.js',
-        'example/simple.js',
+        'examples/simple.js',
         'README.md',
         'CHANGELOG.md'
       ]);
@@ -144,7 +144,7 @@ describe('nody:app', function () {
       assert.noFileContent([
         ['package.json', 'coveralls'],
         ['package.json', 'gulp-jasmine']
-      ])
+      ]);
 
       done();
     })
@@ -152,7 +152,7 @@ describe('nody:app', function () {
 
   it('run without cli', function(done) {
     runGenerator({cli: false}, function() {
-      assert.noFile(['cli.js'])
+      assert.noFile(['cli.js']);
       done();
     })
   });

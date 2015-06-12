@@ -8,6 +8,11 @@
 
   optimist, minimist, yargs, nomnom, nopt, commander.js
 
+
+  http://blog.npmjs.org/post/118810260230/building-a-simple-command-line-tool-with-npm
+  http://blog.npmjs.org/post/119317128765/adding-subcommands-to-your-command-line-tool
+  http://blog.npmjs.org/post/119377806820/making-your-command-line-tool-configurable
+
 */
 
 
