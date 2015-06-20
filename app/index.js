@@ -53,18 +53,6 @@ module.exports = yeoman.Base.extend({
       this.userData = data;
     }),
 
-    askForDependencies: yoHelper.askForDependencies(
-      [
-        { name: 'lodash', description: 'A utility library'},
-        { name: 'q', description: 'A library for promises'},
-        { name: 'debug', description: 'A debug module'}
-      ],
-      function(obj, str) {
-        this.usedDependencies = obj;
-        this.dependencies = str;
-      }
-    ),
-
 
     askForDevDependencies: function () {
       var cb = this.async();
@@ -74,13 +62,17 @@ module.exports = yeoman.Base.extend({
         name: 'modules',
         message: 'Which modules would you like to include?',
         choices: [{
+          value: 'esnext',
+          name: 'esnext (Write esnext script)',
+          checked: true
+        }, {
           value: 'docModule',
           name: 'jsdoc (JavaScript doc generator)',
           checked: true
         }, {
           value: 'bowerModule',
           name: 'bower (For browser user)',
-          checked: true
+          checked: false
         }, {
           value: 'jscsModule',
           name: 'jscs (JavaScript Code Style checker)',
@@ -101,6 +93,7 @@ module.exports = yeoman.Base.extend({
           return props.modules.indexOf(mod) !== -1;
         };
 
+        this.esnext = hasMod('esnext');
         this.docModule = hasMod('docModule');
         this.bowerModule = hasMod('bowerModule');
         this.jscsModule = hasMod('jscsModule');
@@ -133,6 +126,23 @@ module.exports = yeoman.Base.extend({
 
       }.bind(this));
     },
+
+
+    askForDependencies: yoHelper.askForDependencies(
+      [
+        { name: 'lodash', description: 'A utility library', checked: false},
+        { name: 'ylog', description: 'A logger module', checked: false},
+        { name: 'fs-extra', description: 'Extend the vanilla Node.js fs package', checked: false},
+        { name: 'request', description: 'Simplified HTTP request client', checked: false},
+        { name: 'bluebird', description: 'A full featured promise library with unmatched performance', checked: false},
+        { name: 'q', description: 'A library for promises (CommonJS/Promises/A,B,D)', checked: false},
+        { name: 'async', description: 'Higher-order functions for asynchronous code', checked: false}
+      ],
+      function(obj, str) {
+        this.usedDependencies = obj;
+        this.dependencies = str;
+      }
+    ),
 
 
     askForModuleInfo: function() {
@@ -180,7 +190,8 @@ module.exports = yeoman.Base.extend({
     auto: yoHelper.writing(),
     custom: function() {
       if (this.props.cli) {
-        this.template('_ignore/cli._tpl', 'cli.js');
+        this.directory('bin');
+        this.template('_ignore/cli._tpl', 'bin/' + this.slugfile + '.js');
       }
       if (this.docModule && this.userData.github) {
         this.template('_ignore/_publish_docs.sh._tpl', 'publish_docs.sh');

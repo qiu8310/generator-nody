@@ -1,5 +1,6 @@
-{
-  "requireCurlyBraces": ["if", "else", "for", "while", "do", "try", "catch"],
+{<% if (esnext) { %>
+  "esnext": true,<% } %>
+  "requireCurlyBraces": ["try", "catch"],
   "requireSpaceAfterKeywords": ["if", "else", "for", "while", "do", "switch", "return", "try", "catch"],
   "disallowSpaceBeforeBinaryOperators": [",", ":"],
   "disallowSpaceAfterBinaryOperators": ["!"],

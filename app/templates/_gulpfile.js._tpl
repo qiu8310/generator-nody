@@ -1,7 +1,10 @@
 'use strict';
 
 var gulp   = require('gulp');
-var plugins = require('gulp-load-plugins')();
+var plugins = require('gulp-load-plugins')();<% if (esnext) { %>
+var isparta = require('isparta');
+// Make babel preprocess the scripts the user tries to import from here on.
+require('babel/register');<% } %>
 
 var testFiles = ['./test/**/*.js', '!test/{temp,fixtures,temp/**,fixtures/**}'];
 var paths = {
@@ -21,7 +24,7 @@ if (process.env.CI) {
 
 gulp.task('lint', function () {
   return gulp.src(paths.lint)
-    .pipe(plugins.jshint('.jshintrc'))<% if (jscsModule) { %>
+    .pipe(plugins.jshint())<% if (jscsModule) { %>
     .pipe(plugins.plumber(plumberConf))
     .pipe(plugins.jscs())<% } %>
     .pipe(plugins.jshint.reporter('jshint-stylish'));
@@ -29,7 +32,7 @@ gulp.task('lint', function () {
 
 gulp.task('istanbul', function (cb) {
   gulp.src(paths.source)
-    .pipe(plugins.istanbul()) // Covering files
+    .pipe(plugins.istanbul(<% if (esnext) { %>{ instrumenter: isparta.Instrumenter }<% } %>)) // Covering files
     .pipe(plugins.istanbul.hookRequire()) // Force `require` to return covered files
     .on('finish', function () {
       gulp.src(paths.tests)
@@ -49,16 +52,23 @@ gulp.task('unitTest', function () {
     .pipe(plugins.plumber(plumberConf))<% if (testFramework === 'jasmine') { %>
     .pipe(plugins.jasmine());<% } %><% if (testFramework === 'mocha') { %>
     .pipe(plugins.mocha({ reporter: 'list' }));<% } %>
-});<% } %><% if (releaseModule) { %>
-
+});<% } %>
+<% if (releaseModule) { %>
 gulp.task('bump', ['test'], function () {
   var bumpType = plugins.util.env.type || 'patch'; // major.minor.patch
 
   return gulp.src(['./package.json'])
     .pipe(plugins.bump({ type: bumpType }))
     .pipe(gulp.dest('./'));
-});<% } %>
-
+});
+<% } %>
+<% if (esnext) { %>
+gulp.task('build', function () {
+  return gulp.src(paths.source)
+    .pipe(plugins.babel())
+    .pipe(gulp.dest('build'));
+});
+<% } %>
 gulp.task('watch', ['test'], function () {
   gulp.watch(paths.watch, function() {
     // use child process, otherwise will get error.
@@ -77,5 +87,6 @@ gulp.task('watch', ['test'], function () {
 gulp.task('test', ['lint', <% if (istanbulModule) { %>'istanbul'<% } else { %>'unitTest'<% } %>]);<% if (releaseModule) { %>
 
 gulp.task('release', ['bump']);<% } %>
+
 
 gulp.task('default', ['watch']);

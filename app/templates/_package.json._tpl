@@ -5,7 +5,7 @@
   "homepage": "<%= userData.project_url %>",
   "bugs": "<%= userData.issue_url %>",
   "license": "<%= props.license %>",
-  "main": "src/<%= slugfile %>.js",
+  "main": "<% if (esnext) { %>build<% } else { %>src<% } %>/<%= slugfile %>.js",
   "author": {
     "name": "<%= userData.name %>",
     "email": "<%= userData.email %>"
@@ -33,7 +33,10 @@
     "gulp-istanbul": "^0.8.1",<% } %><% if (coverallsModule) { %>
     "coveralls": "^2.11.1",<% } %><% if (testFramework === 'mocha') { %>
     "should": "^6.0.1",<% } %>
-    "jshint-stylish": "^1.0.1",
+    "jshint-stylish": "^1.0.1",<% if (esnext) { %>
+    "babel": "^5.5.8",
+    "gulp-babel": "^5.1.0",
+    "isparta": "^3.0.3",<% } %>
     "gulp-load-plugins": "^0.10.0",<% if (docModule) { %>
     "jsdoc": "^3.3.0-beta3", <% } %><% if (bowerModule) { %>
     "webpack": "^1.8.9",<% } %>
@@ -41,11 +44,13 @@
   },
   <% if (props.cli) { %>
   "bin": {
-      "<%= npmname %>": "cli.js"
+    "<%= npmname %>": "bin/<%= slugfile %>.js"
   },<% } %>
   "scripts": {<% if (docModule) { %>
     "docs": "rm -rf docs && ./node_modules/.bin/jsdoc -c ./jsdoc.json ./README.md && echo 'code{padding: 2px 4px;font-size: 90%;color:#c7254e;background-color:#f9f2f4;border-radius:4px;}' >> ./docs/styles/jsdoc-default.css",<% } %><% if (coverallsModule) { %>
-    "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",<% } %>
+    "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",<% } %><% if (esnext) { %>
+    "babel": "babel src/ --out-dir build --watch",
+    "mocha": "mocha --compilers js:babel/register",<% } %>
     "test": "gulp test"
   }
 }

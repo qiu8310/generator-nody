@@ -14,6 +14,9 @@ function get_package_version() {
 which git-release > /dev/null
 exit_if_last_not_success '\033[31m git-release required, install it in\033[0m \033[34mhttps://github.com/tj/git-extras\033[0m'
 
+npm test
+exit_if_last_not_success
+
 if test $# -gt 0; then
   cur_version=$(get_package_version)
   version=$1

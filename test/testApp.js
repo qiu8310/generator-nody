@@ -129,7 +129,7 @@ describe('nody:app', function () {
         '.editorconfig',
         'package.json',
         'gulpfile.js',
-        'cli.js',
+        'bin/a-m.js',
         '.jscsrc',
         '.jshintrc',
         '.travis.yml',

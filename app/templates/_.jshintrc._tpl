@@ -1,13 +1,12 @@
-{
+{<% if (esnext) { %>
+  "esnext": true,<% } %>
   "node": true,
   "browser": true,
-  "esnext": true,
   "bitwise": true,
   "camelcase": false,
-  "curly": true,
+  "curly": false,
   "eqeqeq": true,
   "immed": true,
-  "indent": false,
   "latedef": "nofunc",
   "newcap": true,
   "noarg": true,

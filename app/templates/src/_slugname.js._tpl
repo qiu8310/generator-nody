@@ -8,6 +8,12 @@
 
 'use strict';
 
+<% if (esnext) { %>
+export default function() {
+  return 'awesome';
+}
+<% } else { %>
 module.exports = function() {
   return 'awesome';
 };
+<% } %>

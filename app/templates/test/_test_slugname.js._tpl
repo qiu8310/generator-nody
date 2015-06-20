@@ -26,6 +26,20 @@
   More on http://www.clock.co.uk/blog/tools-for-unit-testing-and-quality-assurance-in-node-js
 */
 
+<% if (esnext) { %>
+
+import <%= safeSlugname %> from '../src/<%= slugfile %>';<% if (testFramework === 'mocha') { %>
+import assert from 'should';<% } %>
+
+describe('<%= safeSlugname %>', () => {
+  it('should be awesome', () => {<% if (testFramework === 'jasmine') { %>
+   expect(<%= safeSlugname %>()).toEqual('awesome');<% } %><% if (testFramework === 'mocha') { %>
+   <%= safeSlugname %>().should.equal('awesome');<% } %>
+  });
+});
+
+<% } else { %>
+
 var <%= safeSlugname %> = require('../');<% if (testFramework === 'mocha') { %>
 var assert = require('should');<% } %>
 
@@ -37,3 +51,5 @@ describe('<%= safeSlugname %>', function () {
   });
 
 });
+
+<% } %>
