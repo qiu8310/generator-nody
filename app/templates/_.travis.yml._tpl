@@ -1,11 +1,32 @@
 language: node_js
-env: CI=true
 sudo: false
+env:
+  matrix:
+    - CI=true TRAVIS=true
 
 
+## blacklist
+#branches:
+#  except:
+#    - legacy
+#    - experimental
+#
+## whitelist
 #branches:
 #  only:
 #    - master
+#    - stable
+
+
+#before_install
+#install
+#before_script
+#script
+#after_success or after_failure
+#after_script
+#before_deploy
+#deploy
+#after_deploy
 
 node_js:
   - "iojs"
@@ -22,7 +43,10 @@ node_js:
   - "0.10"<% if (coverallsModule) { %>
 after_script:
   - npm run coveralls<% } %>
+
 notifications:
   email:
-    - <%= userData.email %>
-
+    recipients:
+      - <%= userData.email %>
+    #on_success: [always|never|change] # default: change
+    #on_failure: [always|never|change] # default: always

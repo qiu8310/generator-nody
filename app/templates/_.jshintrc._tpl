@@ -6,6 +6,7 @@
   "camelcase": false,
   "curly": false,
   "eqeqeq": true,
+  "eqnull": true,
   "immed": true,
   "latedef": "nofunc",
   "newcap": true,

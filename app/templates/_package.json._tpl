@@ -44,7 +44,7 @@
   },
   <% if (props.cli) { %>
   "bin": {
-    "<%= npmname %>": "bin/<%= slugfile %>.js"
+    "<%= npmname %>": "bin/<%= slugfile %>"
   },<% } %>
   "scripts": {<% if (docModule) { %>
     "docs": "rm -rf docs && ./node_modules/.bin/jsdoc -c ./jsdoc.json ./README.md && echo 'code{padding: 2px 4px;font-size: 90%;color:#c7254e;background-color:#f9f2f4;border-radius:4px;}' >> ./docs/styles/jsdoc-default.css",<% } %><% if (coverallsModule) { %>

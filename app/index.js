@@ -191,7 +191,7 @@ module.exports = yeoman.Base.extend({
     custom: function() {
       if (this.props.cli) {
         this.directory('bin');
-        this.template('_ignore/cli._tpl', 'bin/' + this.slugfile + '.js');
+        this.template('_ignore/cli._tpl', 'bin/' + this.slugfile);
       }
       if (this.docModule && this.userData.github) {
         this.template('_ignore/_publish_docs.sh._tpl', 'publish_docs.sh');

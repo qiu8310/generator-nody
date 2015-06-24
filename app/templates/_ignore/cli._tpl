@@ -6,7 +6,7 @@
 
   http://bocoup.com/weblog/building-command-line-tools-in-node-with-liftoff/
 
-  optimist, minimist, yargs, nomnom, nopt, commander.js
+  optimist, minimist, yargs, nomnom, nopt, commander
 
 
   http://blog.npmjs.org/post/118810260230/building-a-simple-command-line-tool-with-npm
@@ -16,7 +16,7 @@
 */
 
 
-var <%= safeSlugname %> = require('./');
+var <%= safeSlugname %> = require('../');
 
 
 <%= safeSlugname %>();
