@@ -9,11 +9,11 @@
 'use strict';
 
 <% if (esnext) { %>
-export default function() {
+export default function () {
   return 'awesome';
 }
 <% } else { %>
-module.exports = function() {
+module.exports = function () {
   return 'awesome';
 };
 <% } %>

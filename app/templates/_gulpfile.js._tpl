@@ -1,6 +1,6 @@
 'use strict';
 
-var gulp   = require('gulp');
+var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();<% if (esnext) { %>
 var isparta = require('isparta');
 // Make babel preprocess the scripts the user tries to import from here on.
@@ -17,7 +17,7 @@ var paths = {
 var plumberConf = {};
 
 if (process.env.CI) {
-  plumberConf.errorHandler = function(err) {
+  plumberConf.errorHandler = function (err) {
     throw err;
   };
 }
@@ -40,7 +40,7 @@ gulp.task('istanbul', function (cb) {
         .pipe(plugins.jasmine())<% } %><% if (testFramework === 'mocha') { %>
         .pipe(plugins.mocha())<% } %>
         .pipe(plugins.istanbul.writeReports()) // Creating the reports after tests runned
-        .on('finish', function() {
+        .on('finish', function () {
           process.chdir(__dirname);
           cb();
         });
@@ -70,7 +70,7 @@ gulp.task('build', function () {
 });
 <% } %>
 gulp.task('watch', ['test'], function () {
-  gulp.watch(paths.watch, function() {
+  gulp.watch(paths.watch, function () {
     // use child process, otherwise will get error.
     require('child_process').spawn('gulp', ['test'], {
       env: process.env,
